@@ -1,0 +1,15 @@
+task organizeFromGithub(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/chaijs/chai-jquery.git"
+    checkout = "2.0.0"
+}
+version = "2.0.0-SNAPSHOT"
+silksmith.source {
+    main {
+        statics {
+            srcDir organizeFromGithub.outputs.files.singleFile
+            include "chai-jquery.js"
+        }
+    }
+}
+
+pack.dependsOn organizeFromGithub

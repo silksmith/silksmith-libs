@@ -1,0 +1,22 @@
+
+version = "2.6.0-SNAPSHOT"
+
+dependencies {
+    web "io.silksmith.projects:sinon:1.12.1-SNAPSHOT"
+    web "io.silksmith.projects:chai:1.10.0-SNAPSHOT"
+}
+task organizeFromGithub(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/domenic/sinon-chai.git"
+    checkout = "2.6.0"
+}
+silksmith.source {
+    main {
+        statics {
+            srcDir "$organizeFromGithub.outputs.files.singleFile/lib"
+            include "sinon-chai.js"
+
+        }
+    }
+}
+
+pack.dependsOn organizeFromGithub

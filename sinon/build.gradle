@@ -1,0 +1,13 @@
+task download(type: io.silksmith.task.DownloadFiles) {
+    url = "http://sinonjs.org/releases/sinon-1.12.1.js"
+
+}
+version = "1.12.1-SNAPSHOT"
+silksmith.source {
+    main {
+        statics {
+            srcDir download.outputs.files.singleFile
+        }
+    }
+}
+pack.dependsOn download

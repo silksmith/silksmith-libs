@@ -1,0 +1,39 @@
+buildscript {
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "io.silksmith:silksmith:1.0.0-SNAPSHOT"
+    }
+}
+
+apply plugin: "eclipse"
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+
+subprojects {
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    apply plugin: 'maven-publish'
+    apply plugin: "silksmith"
+    publishing {
+
+        publications {
+            snapshot(MavenPublication) {
+                groupId 'io.silksmith.projects'
+                from components.silk
+            }
+        }
+    }
+}
+task wrapper(type: Wrapper) { gradleVersion = "2.2.1" }

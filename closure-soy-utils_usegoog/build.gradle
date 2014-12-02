@@ -1,0 +1,25 @@
+version = "1.0.0-SNAPSHOT"
+task organizeFromGithub(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/google/closure-templates.git"
+    checkout = "e74fcfa284a1e31d42ac93e53cb84a71f638c70b"
+}
+silksmith.source {
+    main {
+        js {
+
+            srcDir organizeFromGithub.outputs.files.singleFile
+
+            include "javascript/soyutils_usegoog.js"
+
+        }
+    }
+}
+dependencies {
+    web project(":closure-base")
+    web project(":closure-library")
+}
+pack.js{
+    from silksmith.source.main.js
+
+}
+pack.dependsOn organizeFromGithub
