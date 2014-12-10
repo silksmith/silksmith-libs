@@ -11,7 +11,9 @@ dependencies {
     web project(":bootstrap-sass")
 }
 
-
+server {
+	dir file("src/www")
+}
 
 closureCompileJS{
     entryPoint="todomvc"
