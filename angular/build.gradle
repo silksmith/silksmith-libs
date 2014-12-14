@@ -1,0 +1,35 @@
+version = "1.3.6+smith.0"
+task angularExterns(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/google/closure-compiler.git"
+    checkout = "bd7fb296792bc7d4f5cbc586427a89a6d1280201"
+}
+task angularBower(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/angular/bower-angular.git"
+    checkout = "v1.3.6"
+}
+
+
+silksmith.source {
+    main {
+        externs {
+            def closurePath = relativePath(file("$angularExterns.outputs.files.singleFile/contrib/externs"))
+            srcDir closurePath
+
+            include "angular-1.3.js"
+            include "angular-1.3-q_templated.js"
+            include "angular-1.3-http-promise_templated.js"
+
+        }
+        statics {
+
+            srcDir angularBower.outputs.files.singleFile
+            include "angular.min.js"
+            include "angular.min.js.map"
+            include "angular-csp.css"
+
+        }
+    }
+}
+
+pack.dependsOn angularExterns
+pack.dependsOn angularBower

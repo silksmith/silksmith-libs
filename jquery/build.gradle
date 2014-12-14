@@ -1,0 +1,27 @@
+version = "1.11.1+smith.0"
+task jqueryExterns(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/google/closure-compiler.git"
+    checkout = "bd7fb296792bc7d4f5cbc586427a89a6d1280201"
+}
+task downloadJQuery(type: io.silksmith.task.DownloadFiles){
+    url ="http://code.jquery.com/jquery-1.11.1.min.js"
+}
+silksmith.source {
+    main {
+        externs {
+            def closurePath = relativePath(file("$jqueryExterns.outputs.files.singleFile/contrib/externs"))
+            srcDir closurePath
+
+            include "jquery-1.9.js"
+
+        }
+        statics {
+
+            srcDir downloadJQuery.outputs.files.singleFile
+
+        }
+    }
+}
+
+pack.dependsOn downloadJQuery
+pack.dependsOn jqueryExterns

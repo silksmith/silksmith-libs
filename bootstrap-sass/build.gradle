@@ -1,8 +1,9 @@
 
+version = "3.3.1+smith.0"
 
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/twbs/bootstrap-sass.git"
-    checkout = "v3.3.0"
+    checkout = "v3.3.1"
 }
 
 silksmith.source {

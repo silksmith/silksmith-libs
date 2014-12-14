@@ -1,11 +1,17 @@
 buildscript {
 
+	ext {
+		silksmithVersion = "1.0.0-SNAPSHOT"
+	}
+
     repositories {
         mavenLocal()
+        jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath "io.silksmith:silksmith:1.0.0-SNAPSHOT"
+	    classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0"
+        classpath "io.silksmith:silksmith:$silksmithVersion"
     }
 }
 
@@ -24,16 +30,39 @@ subprojects {
         mavenLocal()
     }
 
-    apply plugin: 'maven-publish'
     apply plugin: "silksmith"
-    publishing {
 
-        publications {
-            snapshot(MavenPublication) {
-                groupId 'io.silksmith.projects'
-                from components.silk
-            }
-        }
-    }
+	apply plugin: 'maven-publish'
+	apply plugin: "com.jfrog.bintray"
+	publishing {
+		publications {
+			maven(MavenPublication) {
+				groupId 'io.silksmith.libs'
+				from components.silk
+			}
+         }
+	}
+
+
+
+	bintray {
+
+		user = bintray_net_user
+		key = bintray_net_key
+
+		publications = ["maven"]
+		pkg {
+			repo = 'silk'
+			userOrg = "silksmith-io"
+			name = project.name
+			websiteUrl = 'https://github.com/silksmith/silksmith-libs'
+			issueTrackerUrl = 'https://github.com/silksmith/silksmith-libs/issues'
+			vcsUrl = 'https://github.com/silksmith/silksmith-libs.git'
+			licenses = ['MIT']
+			publicDownloadNumbers = true
+
+		}
+
+	}
 }
 task wrapper(type: Wrapper) { gradleVersion = "2.2.1" }

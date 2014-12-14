@@ -1,0 +1,25 @@
+version = "0.6.1+smith.0"
+task gitRepo(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/angular/bower-material.git"
+    checkout = "v0.6.1"
+}
+
+dependencies {
+    web project(":angular")
+    web project(":angular-aria")
+    web project(":angular-animate")
+    web project(":hammer.js")
+}
+silksmith.source {
+    main {
+
+        statics {
+            srcDir gitRepo.outputs.files.singleFile
+            include "angular-material.min.css"
+            include "angular-material.min.js"
+
+        }
+    }
+}
+
+pack.dependsOn gitRepo
