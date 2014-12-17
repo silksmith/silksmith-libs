@@ -1,9 +1,9 @@
 
-version = "2.6.0-SNAPSHOT"
+version = "2.6.0+smith.0"
 
 dependencies {
-    web "io.silksmith.projects:sinon:1.12.1-SNAPSHOT"
-    web "io.silksmith.projects:chai:1.10.0-SNAPSHOT"
+    web project(":sinon")
+    web project(":chai")
 }
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/domenic/sinon-chai.git"
