@@ -1,0 +1,22 @@
+version = "0.2.13-SNAPSHOT"
+task gitRepo(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/angular-ui/ui-router.git"
+    checkout = "0.2.13"
+}
+
+dependencies {
+    web project(":angular")
+}
+silksmith.source {
+    main {
+
+        statics {
+            srcDir "$gitRepo.outputs.files.singleFile/release"
+
+            include "angular-ui-router.min.js"
+
+        }
+    }
+}
+
+pack.dependsOn gitRepo

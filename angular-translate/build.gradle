@@ -1,0 +1,19 @@
+version = "2.5.2-SNAPSHOT"
+task git(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/angular-translate/bower-angular-translate.git"
+    checkout = "2.5.2"
+}
+
+dependencies {
+    web project(":angular")
+}
+silksmith.source {
+    main {
+        statics {
+            srcDir git.outputs.files.singleFile
+            include "angular-translate.min.js"
+        }
+    }
+}
+
+pack.dependsOn git

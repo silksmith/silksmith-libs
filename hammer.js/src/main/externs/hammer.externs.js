@@ -1,4 +1,9 @@
 /**
+ * @type {Object}
+ * @const
+ */
+var hammer = {};
+/**
  * @typedef {{
  * domEvents : (boolean|undefined),
  * enable : (boolean|undefined),

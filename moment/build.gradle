@@ -1,0 +1,17 @@
+version = "2.8.4-SNAPSHOT"
+task bower(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/moment/moment.git"
+    checkout = "2.8.4"
+}
+silksmith.source {
+    main {
+
+        statics {
+            srcDir "$bower.outputs.files.singleFile/min"
+            include "moment.min.js"
+
+        }
+    }
+}
+
+pack.dependsOn bower
