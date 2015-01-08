@@ -1,4 +1,8 @@
-fullCalendar = {};
+/**
+ *
+ * @type {{}}
+ */
+var fullCalendar = {};
 /**
  * @typedef {{
  *  left : (string|undefined),

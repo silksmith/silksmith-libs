@@ -3,7 +3,10 @@ task gitRepo(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/angular-ui/bootstrap-bower"
     checkout = "0.12.0"
 }
-
+task gitRepoExterns(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/google/closure-compiler.git"
+    checkout = "master"
+}
 dependencies {
     web project(":angular")
 }
@@ -12,11 +15,14 @@ silksmith.source {
 
         statics {
             srcDir gitRepo.outputs.files.singleFile
-
             include "ui-bootstrap-tpls.min.js"
-
         }
+         externs {
+            srcDir "$gitRepoExterns.outputs.files.singleFile/contrib/externs"
+            include "ui-bootstrap.js"
+         }
     }
 }
 
 pack.dependsOn gitRepo
+pack.dependsOn gitRepoExterns
