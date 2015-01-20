@@ -77,7 +77,9 @@ pascalprecht.translate.$translateProvider.prototype.translationNotFoundIndicator
  * @para {string} langKey
  */
 pascalprecht.translate.$translateProvider.prototype.use= function(langKey){};
-
+/**
+ * 
+ */
 pascalprecht.translate.$translateProvider.prototype.useCookieStorage= function(){};
 /**
  *
