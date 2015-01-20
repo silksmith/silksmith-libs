@@ -1,7 +1,7 @@
-version = "2.2.3-SNAPSHOT"
+version = "2.2.6-SNAPSHOT"
 task bower(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/arshaw/fullcalendar.git"
-    checkout = "v2.2.3"
+    checkout = "v2.2.6"
 }
 silksmith.source {
     main {
