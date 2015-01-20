@@ -2,7 +2,7 @@
 * @suppress {duplicate}
 * @noalias
 */
-pascalprecht = {};
+var pascalprecht = {};
 /**
  * @type {Object}
  * @const
@@ -74,11 +74,11 @@ pascalprecht.translate.$translateProvider.prototype.translationNotFoundIndicator
 
 /**
  *
- * @para {string} langKey
+ * @param {string} langKey
  */
 pascalprecht.translate.$translateProvider.prototype.use= function(langKey){};
 /**
- * 
+ *
  */
 pascalprecht.translate.$translateProvider.prototype.useCookieStorage= function(){};
 /**
