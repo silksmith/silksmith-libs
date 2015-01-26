@@ -1,6 +1,5 @@
 /**
- *
- * @type {{}}
+ * @const
  */
 var fullCalendar = {};
 /**
@@ -71,17 +70,17 @@ fullCalendar.OptionsHeader;
  *  prev : (string|undefined),
  *  next : (string|undefined),
  *  prevYear : (string|undefined),
- *  nextYear : (string|undefined),
+ *  nextYear : (string|undefined)
  * }}
  */
 fullCalendar.OptionsButtonIcons;
 /**
- * @typedef{{
+ * @typedef {{
  *  weekends: (boolean|undefined),
  *  dayClick: (function(Moment,Event,fullCalendar.ViewObject)|undefined),
  *  eventClick: (function(Moment,Event,fullCalendar.ViewObject)|undefined),
  *  header : (fullCalendar.OptionsHeader|boolean|undefined),
- *  buttonIcons : (fullCalendar.OptionsButtonIcons|undefined)
+ *  buttonIcons : (fullCalendar.OptionsButtonIcons|undefined),
  *  slotDuration : (string|undefined),
  *  lang:(string|undefined),
  *  timeFormat:(string|undefined),
