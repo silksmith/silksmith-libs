@@ -86,7 +86,7 @@ fullCalendar.OptionsButtonIcons;
  *  timeFormat:(string|undefined),
  *  axisFormat:(string|undefined),
  *  businessHours:(boolean|undefined),
- *  eventSources : (Array.<fullCalendar.EventSourceObject|string>|undefined)
+ *  eventSources : (Array.<fullCalendar.EventSourceObject>|Array.<string>|undefined)
  *
  * }}
  */

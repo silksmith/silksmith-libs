@@ -1,9 +1,9 @@
 
-version = "3.3.1+smith.0"
+version = "3.3.3+smith.0"
 
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/twbs/bootstrap-sass.git"
-    checkout = "v3.3.1"
+    checkout = "v3.3.3"
 }
 
 silksmith.source {
@@ -11,7 +11,10 @@ silksmith.source {
         scss {
             def stylesheetsPath = relativePath(file("$organizeFromGithub.outputs.files.singleFile/assets/stylesheets"))
             srcDir stylesheetsPath
-
+        }
+        statics {
+            srcDir relativePath(file("$organizeFromGithub.outputs.files.singleFile/assets"))
+            include "fonts/**"
         }
     }
 }

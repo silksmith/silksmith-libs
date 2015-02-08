@@ -1,0 +1,17 @@
+version = "3.0.0-SNAPSHOT"
+task github(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/lodash/lodash.git"
+    checkout = "3.0.0"
+}
+silksmith.source {
+    main {
+
+        statics {
+            srcDir "$github.outputs.files.singleFile"
+            include "lodash.min.js"
+
+        }
+    }
+}
+
+pack.dependsOn github

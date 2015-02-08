@@ -1,0 +1,50 @@
+version = "1.3.10+smith.0"
+apply plugin : "silksmith-base"
+apply plugin : "maven-publish"
+ext {
+    langs = ["deDe":"de-de"]
+}
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+task angularBower(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/angular/bower-angular-i18n.git"
+    checkout = "v1.3.10"
+}
+configurations {
+    web
+}
+dependencies {
+    web project(":angular")
+}
+import org.gradle.api.internal.artifacts.publish.ArchivePublishArtifact
+import io.silksmith.bundling.task.SilkArchive
+import io.silksmith.publishing.SilkSmithLibrary
+langs.each { langObj ->
+
+    def lang = langObj.value
+    def key = langObj.key
+    def webSourceSet = silksmith.source.create(key)
+
+    webSourceSet.statics {
+        srcDir angularBower.outputs.files.singleFile
+        include "angular-locale_${lang}.js"
+
+    }
+    def packTask = task("pack_$key", type: SilkArchive){
+        statics { from webSourceSet.statics }
+        externs  { from webSourceSet.externs }
+    }
+    packTask.dependsOn angularBower
+    ArchivePublishArtifact archiveArtifact = new ArchivePublishArtifact(packTask)
+
+    publishing.publications.create(key, MavenPublication){
+
+        artifactId "${project.name}_$key"
+
+        groupId 'io.silksmith.libs'
+        def comp = new SilkSmithLibrary(archiveArtifact, configurations.web.allDependencies)
+        from comp
+    }
+}

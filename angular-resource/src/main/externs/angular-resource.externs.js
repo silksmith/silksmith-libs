@@ -1,4 +1,9 @@
 /**
+ * @typedef {function(string, (angular.$resource.Params|angular.$resource.Actions|angular.$resource.Config)=, (angular.$resource.Actions|angular.$resource.Config)=, angular.$resource.Config=):(!angular.$resource.ResourceObject)}
+ */
+angular.$resourceFactory;
+
+/**
  * @param {string} url
  * @param {(angular.$resource.Params|angular.$resource.Actions|angular.$resource.Config)=} paramDefaults
  * @param {(angular.$resource.Actions|angular.$resource.Config)=} actions
@@ -56,9 +61,9 @@ angular.$resource.ErrorHandler;
 
 /**
  * @constructor
+ * @param {Object=} data
  */
-angular.$resource.ResourceObject = function () {
-};
+angular.$resource.ResourceObject = function(data) {};
 
 /**
  * @param {(angular.$resource.Params | angular.$resource.SuccessHandler)=} paramsOrSuccessHandler

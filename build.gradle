@@ -10,7 +10,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-	    classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0"
+	    classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1"
         classpath "io.silksmith:silksmith:$silksmithVersion"
     }
 }
@@ -23,7 +23,7 @@ repositories {
 }
 
 
-subprojects {
+configure(subprojects - project(":angular-i18n")){
 
     repositories {
         mavenCentral()
@@ -65,4 +65,4 @@ subprojects {
 
 	}
 }
-task wrapper(type: Wrapper) { gradleVersion = "2.2.1" }
+task wrapper(type: Wrapper) { gradleVersion = "2.3-rc-1" }

@@ -86,27 +86,28 @@ Moment.prototype.milliseconds = function(val){};
 Moment.prototype.set = function(unit, value){};
 
 /**
- * @param {Duration} val
+ * @param {Duration|number} val
+ * @param {string=} unit
  * @returns {Moment}
  */
-Moment.prototype.add = function(val){};
+Moment.prototype.add = function(val,unit){};
 /**
- * @param {Duration} val
+ * @param {Duration|number} val
+ * @param {string=} unit
  * @returns {Moment}
  */
-Moment.prototype.subtract = function(val){};
+Moment.prototype.subtract = function(val,unit){};
 
 /**
  * @returns {Date}
  */
 Moment.prototype.toDate = function(){};
 
-
 /**
- * @param {boolean=} withoutSuffix
+ * @param {boolean=} withoutTheSuffix
  * @returns {string}
  */
-Moment.prototype.fromNow =  function(withoutTheSuffix){};
+Moment.prototype.fromNow = function(withoutTheSuffix){};
 /**
  * @param {string=} format
  * @returns {string}
@@ -117,6 +118,15 @@ Moment.prototype.format =  function(format){};
  * @returns {boolean}
  */
 Moment.prototype.isValid = function(){};
+
+/**
+ * @returns {Moment}
+ */
+Moment.prototype.utc = function(){};
+/**
+ * @returns {Moment}
+ */
+Moment.prototype.local = function(){};
 
 /**
  * @typedef {function()}

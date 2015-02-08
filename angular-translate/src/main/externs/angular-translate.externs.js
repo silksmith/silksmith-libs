@@ -22,11 +22,6 @@ pascalprecht.translate.$translateProvider = function(){
 pascalprecht.translate.$translateProvider.prototype.translations = function(key, translationTable){};
 /**
  *
- * @param {string} lang
- */
-pascalprecht.translate.$translateProvider.prototype.preferredLanguage = function(lang){};
-/**
- *
  * @param {Object} factory
  */
 pascalprecht.translate.$translateProvider.prototype.addInterpolation = function(factory){};
