@@ -1,0 +1,18 @@
+def baseVersion ="1.1.2"
+version = "$baseVersion-SNAPSHOT"
+task bower(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/kriskowal/q.git"
+    checkout = "v$baseVersion"
+}
+silksmith.source {
+    main {
+
+        statics {
+            srcDir "$bower.outputs.files.singleFile"
+            include "q.js"
+
+        }
+    }
+}
+
+pack.dependsOn bower

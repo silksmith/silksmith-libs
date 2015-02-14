@@ -1,0 +1,18 @@
+task organizeFromGithub(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/domenic/chai-as-promised.git"
+    checkout = "4.1.1"
+}
+version = "4.1.1+smith.0"
+silksmith.source {
+    main {
+        statics {
+            srcDir "$organizeFromGithub.outputs.files.singleFile/lib"
+            include "chai-as-promised.js"
+        }
+    }
+}
+
+dependencies {
+    web project(":chai")
+}
+pack.dependsOn organizeFromGithub

@@ -1,0 +1,18 @@
+def baseVersion ="1.0.0-beta.12"
+version = "$baseVersion-SNAPSHOT"
+task bower(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/sockjs/sockjs-client.git"
+    checkout = "v$baseVersion"
+}
+silksmith.source {
+    main {
+
+        statics {
+            srcDir "$bower.outputs.files.singleFile/dist"
+            include "sockjs-${baseVersion}.min.js"
+
+        }
+    }
+}
+
+pack.dependsOn bower
