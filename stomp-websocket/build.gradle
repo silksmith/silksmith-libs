@@ -1,0 +1,17 @@
+version = "2.3.0-SNAPSHOT"
+task bower(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/jmesnil/stomp-websocket.git"
+    checkout = "v2.3.0"
+}
+silksmith.source {
+    main {
+
+        statics {
+            srcDir "$bower.outputs.files.singleFile/lib"
+            include "stomp.min.js"
+
+        }
+    }
+}
+
+pack.dependsOn bower
