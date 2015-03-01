@@ -1,4 +1,4 @@
-version = "2.8.4-SNAPSHOT"
+version = "2.8.4+smith.0"
 task bower(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/moment/moment.git"
     checkout = "2.8.4"

@@ -1,11 +1,11 @@
-version = "2.1.3-SNAPSHOT"
+version = "1.11.2+smith.0"
 task jqueryExterns(type: io.silksmith.task.GitFiles) {
-    url = "https://github.com/google/closure-compiler.git"
-    checkout = "bd7fb296792bc7d4f5cbc586427a89a6d1280201"
+    url = closureCompilerGithubRepo
+    checkout = closureCompilerGithubCommit
 }
 task github(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/jquery/jquery.git"
-    checkout = "2.1.3"
+    checkout = "1.11.2"
 }
 
 silksmith.source {

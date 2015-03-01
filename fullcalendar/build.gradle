@@ -1,4 +1,4 @@
-version = "2.2.6-SNAPSHOT"
+version = "2.2.6+smith.0"
 task bower(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/arshaw/fullcalendar.git"
     checkout = "v2.2.6"
@@ -15,8 +15,8 @@ silksmith.source {
     }
 }
 dependencies {
-    web project(":jquery")
-    web project(":moment")
+    web "io.silksmith.libs:jquery:1.7.1"
+    web "io.silksmith.libs:moment:2.5.0"
 }
 
 pack.dependsOn bower

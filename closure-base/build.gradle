@@ -1,7 +1,7 @@
-version = "1.0.0+smith.0"
+version = "1.0.1+smith.0"
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
-    url = "https://github.com/google/closure-library.git"
-    checkout = "5b7a6ce1974c230dc169cb93ed5f9689e880aa50"
+    url = closureCompilerGithubRepo
+    checkout = closureCompilerGithubCommit
 }
 silksmith.source {
     main {

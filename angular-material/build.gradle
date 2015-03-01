@@ -1,9 +1,12 @@
-version = "0.7.0+smith.0"
+version = "0.8.1+smith.0"
 task gitRepo(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/angular/bower-material.git"
-    checkout = "v0.7.0-rc1"
+    checkout = "v0.8.1"
 }
-
+task gitExterns(type: io.silksmith.task.GitFiles) {
+    url = closureCompilerGithubRepo
+    checkout = closureCompilerGithubCommit
+}
 dependencies {
     web project(":angular")
     web project(":angular-aria")
@@ -19,7 +22,14 @@ silksmith.source {
             include "angular-material.min.js"
 
         }
+         externs {
+            def closurePath = relativePath(file("gitExterns.outputs.files.singleFile/contrib/externs"))
+
+            srcDir closurePath
+            include "angular-material.js"
+        }
     }
 }
 
 pack.dependsOn gitRepo
+pack.dependsOn gitExterns

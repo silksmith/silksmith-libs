@@ -1,7 +1,7 @@
-version = "1.3.10-SNAPSHOT"
+version = "$angularVersion+smith.0"
 task angularBower(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/angular/bower-angular-resource.git"
-    checkout = "v1.3.10"
+    checkout = "v$angularVersion"
 }
 
 dependencies {
