@@ -1,0 +1,21 @@
+
+version = "3.3.2+smith.0"
+
+task organizeFromGithub(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/twbs/bootstrap.git"
+    checkout = "v3.3.2"
+}
+
+silksmith.source {
+    main {
+        statics {
+            srcDir relativePath(file("$organizeFromGithub.outputs.files.singleFile/dist/js"))
+            include "bootstrap.min.js"
+        }
+    }
+}
+
+dependencies {
+    web "io.silksmith.libs:jquery:1.9.1+smith.+"
+}
+pack.dependsOn organizeFromGithub
