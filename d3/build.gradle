@@ -1,0 +1,17 @@
+version = "3.5.5-SNAPSHOT"
+
+task github(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/mbostock/d3.git"
+    checkout = "v3.5.5"
+}
+
+silksmith.source {
+    main {
+        statics {
+            srcDir github.outputs.files.singleFile
+            include "d3.min.js"
+        }
+    }
+}
+
+pack.dependsOn github
