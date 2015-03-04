@@ -1,6 +1,5 @@
 /**
- * @type {Object}
- * @const
+ * @namespace
  */
 var hammer = {};
 /**
