@@ -55,6 +55,7 @@ configure(subprojects - project(":angular-i18n")){
 		key = bintray_net_key
 
 		publications = ["maven"]
+		publish = true
 		pkg {
 			repo = 'silk'
 			userOrg = "silksmith-io"

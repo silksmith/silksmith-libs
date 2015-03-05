@@ -1,7 +1,7 @@
-version = "0.8.1+smith.0"
+version = "0.8.3+smith.0"
 task gitRepo(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/angular/bower-material.git"
-    checkout = "v0.8.1"
+    checkout = "v0.8.3"
 }
 task gitExterns(type: io.silksmith.task.GitFiles) {
     url = closureCompilerGithubRepo
