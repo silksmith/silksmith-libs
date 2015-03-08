@@ -13,5 +13,19 @@ silksmith.source {
         }
     }
 }
+pack {
+    manifest {
+        statics {
+            "lodash.min.js" {
+                js()
+            }
+        }
+        usage {
+            common {
+                files = ["lodash.min.js"]
+            }
+        }
+    }
+}
 
 pack.dependsOn github

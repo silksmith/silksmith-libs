@@ -1,4 +1,4 @@
-version = "1.11.2+smith.0"
+version = "1.11.2+smith.1"
 task jqueryExterns(type: io.silksmith.task.GitFiles) {
     url = closureCompilerGithubRepo
     checkout = closureCompilerGithubCommit
@@ -23,6 +23,23 @@ silksmith.source {
             include "jquery.min.js"
             include "jquery.min.map"
 
+        }
+    }
+}
+pack {
+    manifest {
+        statics {
+            "jquery.min.js" {
+                js()
+            }
+            "jquery.min.map" {
+                mimeType = "application/json"
+            }
+        }
+        usage {
+            common {
+                files = ["jquery.min.js"]
+            }
         }
     }
 }
