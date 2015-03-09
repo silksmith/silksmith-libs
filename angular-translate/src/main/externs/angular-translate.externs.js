@@ -88,6 +88,8 @@ pascalprecht.translate.$translateProvider.prototype.useInterpolation= function(f
  */
 pascalprecht.translate.$translateProvider.prototype.useLoader= function(loaderFactory, options){};
 
+
+
 //pascalprecht.translate.$translateProvider.prototype.useLoaderCache= function(cache){};
 //
 //pascalprecht.translate.$translateProvider.prototype.useLocalStorage= function(){};
