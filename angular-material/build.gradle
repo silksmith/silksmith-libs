@@ -1,4 +1,4 @@
-version = "0.8.3+smith.0"
+version = "0.8.3+smith.1"
 task gitRepo(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/angular/bower-material.git"
     checkout = "v0.8.3"
@@ -24,7 +24,7 @@ silksmith.source {
 
         }
          externs {
-            def closurePath = relativePath(file("gitExterns.outputs.files.singleFile/contrib/externs"))
+            def closurePath = relativePath(file("$gitExterns.outputs.files.singleFile/contrib/externs"))
             srcDir closurePath
             include "angular-material.js"
         }
