@@ -2,6 +2,7 @@ version = "$angularVersion+smith.0"
 task angularExterns(type: io.silksmith.task.GitFiles) {
     url = closureCompilerGithubRepo
     checkout = closureCompilerGithubCommit //"bd7fb296792bc7d4f5cbc586427a89a6d1280201"
+    workingCopyDir = closureCompilerGitWorkingCopy
 }
 task angularBower(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/angular/bower-angular.git"

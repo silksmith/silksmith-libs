@@ -6,6 +6,7 @@ task jqueryExterns(type: io.silksmith.task.GitFiles) {
 task github(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/jquery/jquery.git"
     checkout = "1.11.2"
+    workingCopyDir = closureCompilerGitWorkingCopy
 }
 
 silksmith.source {

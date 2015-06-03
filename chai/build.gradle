@@ -1,8 +1,8 @@
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/chaijs/chai.git"
-    checkout = "1.10.0"
+    checkout = "2.3.0"
 }
-version = "1.10.0+smith.0"
+version = "2.3.0+smith.0"
 silksmith.source {
     main {
         statics {

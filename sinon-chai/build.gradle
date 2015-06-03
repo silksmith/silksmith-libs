@@ -1,5 +1,5 @@
 
-version = "2.6.0+smith.0"
+version = "2.7.0+smith.0"
 
 dependencies {
     web project(":sinon")
@@ -7,7 +7,7 @@ dependencies {
 }
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/domenic/sinon-chai.git"
-    checkout = "2.6.0"
+    checkout = "2.7.0"
 }
 silksmith.source {
     main {

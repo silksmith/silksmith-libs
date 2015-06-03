@@ -1,8 +1,8 @@
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/domenic/chai-as-promised.git"
-    checkout = "4.1.1"
+    checkout = "5.0.0"
 }
-version = "4.1.1+smith.0"
+version = "5.0.0+smith.0"
 silksmith.source {
     main {
         statics {

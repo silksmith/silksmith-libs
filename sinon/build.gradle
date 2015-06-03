@@ -1,8 +1,8 @@
 task download(type: io.silksmith.task.DownloadFiles) {
-    url = "http://sinonjs.org/releases/sinon-1.12.1.js"
+    url = "http://sinonjs.org/releases/sinon-1.15.0.js"
 
 }
-version = "1.12.1+smith.0"
+version = "1.15.0+smith.0"
 silksmith.source {
     main {
         statics {

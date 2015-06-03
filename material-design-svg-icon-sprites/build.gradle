@@ -1,0 +1,19 @@
+version = "1.0.1+smith.0"
+task gitRepo(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/google/material-design-icons.git"
+    checkout = "1.0.1"
+}
+silksmith.source {
+    main {
+
+        statics {
+            def path = relativePath(file("$gitRepo.outputs.files.singleFile/sprites/svg-sprite"))
+            srcDir path
+            include "*.svg"
+
+        }
+
+    }
+}
+
+pack.dependsOn gitRepo

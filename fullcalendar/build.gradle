@@ -15,8 +15,8 @@ silksmith.source {
     }
 }
 dependencies {
-    web "io.silksmith.libs:jquery:1.7.1"
-    web "io.silksmith.libs:moment:2.5.0"
+    web "io.silksmith.libs:jquery:1.11.2+smith.1"
+    web "io.silksmith.libs:moment:2.8.4+smith.0"
 }
 
 pack.dependsOn bower
