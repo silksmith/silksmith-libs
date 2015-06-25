@@ -1,0 +1,33 @@
+def fireBaseVersion = "2.2.6"
+version = "$fireBaseVersion+smith.0"
+task github(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/firebase/firebase-bower.git"
+    checkout = "v$fireBaseVersion"
+}
+
+silksmith.source {
+    main {
+
+        statics {
+            srcDir "$github.outputs.files.singleFile"
+            include "firebase.js"
+
+        }
+    }
+}
+pack {
+    manifest {
+        statics {
+            "firebase.js" {
+                js()
+            }
+        }
+        usage {
+            common {
+                files = ["firebase.js"]
+            }
+        }
+    }
+}
+
+pack.dependsOn github

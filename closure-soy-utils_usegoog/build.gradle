@@ -1,4 +1,4 @@
-version = "1.0.1+smith.0"
+version = "v"+new Date().format("yyyyMMdd")
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
     url = closureLibraryGithubRepo
     checkout = closureLibraryGithubCommit
