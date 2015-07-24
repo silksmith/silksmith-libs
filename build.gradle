@@ -28,13 +28,13 @@ repositories {
 
 ext{
    angularBaseVersionMinor = "1.4"
-   angularVersion = "${angularBaseVersionMinor}.1"
+   angularVersion = "${angularBaseVersionMinor}.3"
    closureCompilerGithubRepo = "https://github.com/google/closure-compiler.git"
-   closureCompilerGithubCommit = "e6d997fc4c11e09dcff2baa3e3c2cc0351081ea5"
+   closureCompilerGithubCommit = "ba7d12ac02937334af6dbbf2e91a81b5ddfe95e6"
    closureCompilerGitWorkingCopy = file("$project.buildDir/closureCompiler")
 
    closureLibraryGithubRepo = "https://github.com/google/closure-library.git"
-   closureLibraryGithubCommit = "eb26f425dbd99a70d2955d8fcc892f2fd0178acb"
+   closureLibraryGithubCommit = "20be95baf89cb36dfd55c708d69a375e2326123a"
    closureLibraryGitWorkingCopy = file("$project.buildDir/closureLibrary")
 }
 configure(subprojects - project(":angular-i18n")){

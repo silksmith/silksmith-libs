@@ -1,8 +1,9 @@
+def baseVersion = "1.15.4"
 task download(type: io.silksmith.task.DownloadFiles) {
-    url = "http://sinonjs.org/releases/sinon-1.15.0.js"
+    url = "http://sinonjs.org/releases/sinon-${baseVersion}.js"
 
 }
-version = "1.15.0+smith.0"
+version = "${baseVersion}+smith.0"
 silksmith.source {
     main {
         statics {

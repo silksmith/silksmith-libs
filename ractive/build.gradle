@@ -1,0 +1,19 @@
+def baseVersion = "0.7.3"
+version = "$baseVersion+smith.0"
+task bower(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/ractivejs/ractive.git"
+    checkout = "v$baseVersion"
+}
+silksmith.source {
+    main {
+
+        statics {
+            srcDir "$bower.outputs.files.singleFile"
+            include "ractive.min.js"
+            include "ractive.js.map"
+
+        }
+    }
+}
+
+pack.dependsOn bower

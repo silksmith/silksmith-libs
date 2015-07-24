@@ -29,5 +29,5 @@ include 'sockjs-client'
 include 'q'
 include 'd3'
 include 'material-design-svg-icon-sprites'
-
+include 'mocha'
 //include 'firebase'
