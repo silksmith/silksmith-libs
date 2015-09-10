@@ -1,0 +1,59 @@
+def baseVersion = "0.1.12"
+version = "$baseVersion+smith."+new Date().time
+
+def repo = "https://github.com/Netflix/falcor.git"
+task github(type: io.silksmith.task.GitFiles) {
+    url = repo
+    checkout = baseVersion
+
+}
+
+silksmith.source {
+    main {
+
+        statics {
+
+            srcDir "$github.outputs.files.singleFile/dist"
+            include "falcor.browser.min.js"
+
+
+        }
+    }
+}
+pack {
+    manifest {
+        statics {
+            "falcor.browser.min.js" {
+                js()
+            }
+
+        }
+        usage {
+            common {
+                files = ["falcor.browser.min.js"]
+            }
+        }
+    }
+}
+pack.staticsLicense {
+    from "$github.outputs.files.singleFile/LICENSE.txt"
+}
+pack.externsLicense {
+    from "$jqueryExterns.outputs.files.singleFile/LICENSE"
+}
+pack.manifest {
+
+    metainfo {
+        statics {
+            origin repo
+            license = 'Apache-2.0'
+
+        }
+
+    }
+}
+ext {
+ licenses = ['MIT','Apache-2.0']
+}
+pack.dependsOn github
+

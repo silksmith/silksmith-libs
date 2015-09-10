@@ -24,3 +24,17 @@ pack.js{
 
 }
 pack.dependsOn organizeFromGithub
+pack.jsLicense {
+    from "$organizeFromGithub.outputs.files.singleFile/LICENSE"
+}
+pack.manifest {
+    metainfo {
+        js {
+            license = 'Apache-2.0'
+            origin closureLibraryGithubRepo
+        }
+    }
+}
+ext {
+ licenses = ['Apache-2.0']
+}

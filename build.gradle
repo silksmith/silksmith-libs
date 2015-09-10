@@ -1,7 +1,7 @@
 buildscript {
 
 	ext {
-		silksmithVersion = "0.5.0"
+		silksmithVersion = "0.6.2"
 	}
 
     repositories {
@@ -14,8 +14,9 @@ buildscript {
 
     }
     dependencies {
-	    classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1"
-         classpath "gradle.plugin.io.silksmith:silksmith:$silksmithVersion"
+	    classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2"
+        classpath "gradle.plugin.io.silksmith:plugin:$silksmithVersion"
+        //classpath "io.silksmith:plugin:$silksmithVersion"
     }
 }
 
@@ -24,24 +25,26 @@ apply plugin: "eclipse"
 repositories {
     mavenCentral()
     mavenLocal()
+
 }
 
 ext{
    angularBaseVersionMinor = "1.4"
    angularVersion = "${angularBaseVersionMinor}.3"
    closureCompilerGithubRepo = "https://github.com/google/closure-compiler.git"
-   closureCompilerGithubCommit = "ba7d12ac02937334af6dbbf2e91a81b5ddfe95e6"
+   closureCompilerGithubCommit = "30433568c712a3846947faef5bb6bc4465680bf3"
    closureCompilerGitWorkingCopy = file("$project.buildDir/closureCompiler")
 
    closureLibraryGithubRepo = "https://github.com/google/closure-library.git"
-   closureLibraryGithubCommit = "20be95baf89cb36dfd55c708d69a375e2326123a"
+   closureLibraryGithubCommit = "65696139a126d5cd523f56f6ef8852f15b107512"
    closureLibraryGitWorkingCopy = file("$project.buildDir/closureLibrary")
 }
 configure(subprojects - project(":angular-i18n")){
-
+    apply plugin: "io.silksmith.plugin"
     repositories {
         mavenCentral()
         mavenLocal()
+         maven { url="http://dl.bintray.com/silksmith-io/silk"}
     }
 
     apply plugin: "io.silksmith.plugin"
@@ -59,6 +62,12 @@ configure(subprojects - project(":angular-i18n")){
 
 
 
+
+
+
+    afterEvaluate {
+
+
 	bintray {
 
 		user = bintray_net_user
@@ -67,17 +76,25 @@ configure(subprojects - project(":angular-i18n")){
 		publications = ["maven"]
 		publish = true
 		pkg {
+			println "project: $project.name - $project.ext"
 			repo = 'silk'
 			userOrg = "silksmith-io"
 			name = project.name
 			websiteUrl = 'https://github.com/silksmith/silksmith-libs'
 			issueTrackerUrl = 'https://github.com/silksmith/silksmith-libs/issues'
 			vcsUrl = 'https://github.com/silksmith/silksmith-libs.git'
-			licenses = ['MIT']
+			if(project.hasProperty('licenses')) {
+				licenses = project.licenses
+			} else {
+				logger.warn "$project.name has no license information"
+			}
+
 			publicDownloadNumbers = true
 
 		}
 
 	}
+	}
+
 }
-task wrapper(type: Wrapper) { gradleVersion = "2.4" }
+task wrapper(type: Wrapper) { gradleVersion = "2.5" }

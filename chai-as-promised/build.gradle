@@ -1,8 +1,10 @@
+def baseVersion = "5.1.0"
+def repo ="https://github.com/domenic/chai-as-promised.git"
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
-    url = "https://github.com/domenic/chai-as-promised.git"
-    checkout = "5.0.0"
+    url = repo
+    checkout = "$baseVersion"
 }
-version = "5.0.0+smith.0"
+version = "$baseVersion+smith.0"
 silksmith.source {
     main {
         statics {
@@ -16,3 +18,14 @@ dependencies {
     web project(":chai")
 }
 pack.dependsOn organizeFromGithub
+pack.staticsLicense {
+    from "$organizeFromGithub.outputs.files.singleFile/LICENSE.txt"
+}
+pack.manifest {
+
+    metainfo {
+        statics {
+            origin repo
+        }
+    }
+}

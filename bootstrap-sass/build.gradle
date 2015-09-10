@@ -1,6 +1,6 @@
 
 def baseVersion = "3.3.5"
-version = "$baseVersion+smith.0"
+version = "$baseVersion+smith.2"
 
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
     url = "https://github.com/twbs/bootstrap-sass.git"
@@ -21,3 +21,21 @@ silksmith.source {
 }
 
 pack.dependsOn organizeFromGithub
+pack.scssLicense {
+    from "$organizeFromGithub.outputs.files.singleFile/LICENSE"
+}
+pack.manifest {
+    metainfo {
+        scss {
+            license = 'MIT'
+            origin "https://github.com/twbs/bootstrap-sass.git"
+        }
+        statics {
+                license = 'MIT'
+                origin closureLibraryGithubRepo
+        }
+    }
+}
+ext {
+ licenses = ['MIT']
+}

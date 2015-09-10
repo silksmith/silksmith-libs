@@ -30,4 +30,7 @@ include 'q'
 include 'd3'
 include 'material-design-svg-icon-sprites'
 include 'mocha'
+
+include 'falcor'
 //include 'firebase'
+//include 'material-design-lite'

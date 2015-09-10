@@ -1,8 +1,11 @@
+def repo = "https://github.com/chaijs/chai-jquery.git"
+def baseVersion ="2.0.0"
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
-    url = "https://github.com/chaijs/chai-jquery.git"
-    checkout = "2.0.0"
+    url = repo
+    checkout = "$baseVersion"
 }
-version = "2.0.0+smith.1"
+version = "$baseVersion+smith.3"
+
 silksmith.source {
     main {
         statics {
@@ -13,7 +16,22 @@ silksmith.source {
 }
 
 dependencies {
-    web project(":jquery")
-    web project(":chai")
+    web "io.silksmith.libs:jquery:1.11.2+smith.0"
+    web "io.silksmith.libs:chai:2.3.0+smith.0"
 }
 pack.dependsOn organizeFromGithub
+pack.staticsLicense {
+    from "$organizeFromGithub.outputs.files.singleFile/LICENSE"
+}
+pack.manifest {
+
+    metainfo {
+        statics {
+            origin repo
+            license = 'MIT'
+        }
+    }
+}
+ext {
+ licenses = ['MIT']
+}

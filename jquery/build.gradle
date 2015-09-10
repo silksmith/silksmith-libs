@@ -1,13 +1,14 @@
 def baseVersion = "2.1.4"
-version = "$baseVersion+smith.0"
+version = "$baseVersion+smith.1"
 task jqueryExterns(type: io.silksmith.task.GitFiles) {
     url = closureCompilerGithubRepo
     checkout = closureCompilerGithubCommit
 }
+def repo = "https://github.com/jquery/jquery.git"
 task github(type: io.silksmith.task.GitFiles) {
-    url = "https://github.com/jquery/jquery.git"
+    url = repo
     checkout = baseVersion
-    workingCopyDir = closureCompilerGitWorkingCopy
+
 }
 
 silksmith.source {
@@ -45,6 +46,28 @@ pack {
         }
     }
 }
+pack.staticsLicense {
+    from "$github.outputs.files.singleFile/LICENSE.txt"
+}
+pack.externsLicense {
+    from "$jqueryExterns.outputs.files.singleFile/LICENSE"
+}
+pack.manifest {
 
+    metainfo {
+        statics {
+            origin repo
+            license = 'MIT'
+
+        }
+        externs {
+            origin closureCompilerGithubRepo
+            license = 'Apache-2.0'
+        }
+    }
+}
+ext {
+ licenses = ['MIT','Apache-2.0']
+}
 pack.dependsOn github
 pack.dependsOn jqueryExterns

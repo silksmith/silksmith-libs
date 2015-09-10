@@ -1,5 +1,6 @@
 version = "v"+new Date().format("yyyyMMdd")//"1.0.2+smith.0"
 
+
 task organizeFromGithub(type: io.silksmith.task.GitFiles) {
     url = closureLibraryGithubRepo
     checkout = closureLibraryGithubCommit
@@ -18,3 +19,18 @@ silksmith.source {
 }
 
 pack.dependsOn organizeFromGithub
+
+pack.staticsLicense {
+    from "$organizeFromGithub.outputs.files.singleFile/LICENSE"
+}
+pack.manifest {
+    metainfo {
+        statics {
+            license = 'Apache-2.0'
+            origin closureLibraryGithubRepo
+        }
+    }
+}
+ext {
+ licenses = ['Apache-2.0']
+}
