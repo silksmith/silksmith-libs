@@ -38,9 +38,6 @@ pack {
 pack.staticsLicense {
     from "$github.outputs.files.singleFile/LICENSE.txt"
 }
-pack.externsLicense {
-    from "$jqueryExterns.outputs.files.singleFile/LICENSE"
-}
 pack.manifest {
 
     metainfo {
