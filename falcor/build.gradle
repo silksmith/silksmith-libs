@@ -1,10 +1,10 @@
-def baseVersion = "0.1.12"
-version = "$baseVersion+smith."+new Date().time
+def baseVersion = "0.1.13"
+version = "$baseVersion+smith."+new Date().format("yyyyMMdd")
 
 def repo = "https://github.com/Netflix/falcor.git"
 task github(type: io.silksmith.task.GitFiles) {
     url = repo
-    checkout = baseVersion
+    checkout = "v$baseVersion"
 
 }
 
