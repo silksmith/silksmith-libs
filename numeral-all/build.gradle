@@ -1,0 +1,41 @@
+def baseVersion = "1.5.3"
+version = "$baseVersion+smith.0"
+task github(type: io.silksmith.task.GitFiles) {
+    url = "https://github.com/adamwdraper/Numeral-js.git"
+    checkout = "$baseVersion"
+}
+def concatOutputFile = file("$buildDir/concat/numeral-all.min.js")
+concatOutputFile.parentFile.mkdirs()
+task concat() <<{
+  concatOutputFile.text = file("$github.outputs.files.singleFile/min/numeral.min.js").text + file("$github.outputs.files.singleFile/min/languages.min.js").text
+}
+concat.outputs.file concatOutputFile
+silksmith.source {
+    main {
+        statics {
+           srcDir concat.outputs.files.singleFile.parentFile
+        }
+    }
+}
+pack {
+    manifest {
+        statics {
+            "numeral-all.min.js" {
+                js()
+            }
+        }
+        usage {
+            common {
+                files = ["numeral-all.min.js"]
+            }
+        }
+    }
+}
+pack.staticsLicense {
+    from "$github.outputs.files.singleFile/LICENSE"
+}
+ext {
+ licenses = ['MIT']
+}
+concat.dependsOn github
+pack.dependsOn concat
