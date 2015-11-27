@@ -1,4 +1,4 @@
-def baseVersion = "0.1.13"
+def baseVersion = "0.1.14"
 version = "$baseVersion+smith."+new Date().format("yyyyMMdd")
 
 def repo = "https://github.com/Netflix/falcor.git"

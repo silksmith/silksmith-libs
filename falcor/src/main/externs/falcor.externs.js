@@ -13,13 +13,13 @@ falcor.Key;
 falcor.KeySet;
 /**
  *
- * @typedef{Array.<falcor.KeySet>}
+ * @typedef {Array.<falcor.KeySet>}
  */
 falcor.PathSet;
 
 /**
  *
- * @typedef{Array.<falcor.Key>}
+ * @typedef {Array.<falcor.Key>}
  */
 falcor.Path;
 /**
