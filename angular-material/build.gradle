@@ -1,5 +1,5 @@
 ext {
-    materialVersion = "1.0.0-rc5"
+    materialVersion = "1.0.1"
 }
 version = "$materialVersion+smith.0"
 task gitRepo(type: io.silksmith.task.GitFiles) {
